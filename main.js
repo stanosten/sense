@@ -18,13 +18,16 @@ const perfInfo = (() => {
     Boolean(saveData) ||
     (deviceMemory !== null && deviceMemory <= 4) ||
     (hardwareConcurrency !== null && hardwareConcurrency <= 4);
+  const smallScreen =
+    window.matchMedia && window.matchMedia("(max-width: 768px)").matches;
   const coarsePointer =
     window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
   return {
     prefersReducedMotion,
     lowPerf,
+    smallScreen,
     coarsePointer,
-    reduceMotion: prefersReducedMotion || lowPerf,
+    reduceMotion: prefersReducedMotion || lowPerf || smallScreen,
   };
 })();
 
@@ -32,6 +35,7 @@ const getPerfInfo = () => perfInfo;
 
 document.documentElement.classList.toggle("is-low-perf", perfInfo.lowPerf);
 document.documentElement.classList.toggle("is-reduced-motion", perfInfo.prefersReducedMotion);
+document.documentElement.classList.toggle("is-small-screen", perfInfo.smallScreen);
 
 function initLenis() {
   const root = document.documentElement;

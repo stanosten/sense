@@ -3245,3 +3245,28 @@ html.is-low-perf .faq-title {
   animation: none;
   background-position: 0% 0%;
 }
+
+@media (max-width: 768px) {
+  .js-reveal,
+  .fade-in,
+  .about-quality,
+  .pricing-card,
+  .gift-card,
+  .faq-card,
+  .contacts-card,
+  .reviews-card,
+  .about-card--stats,
+  .timeline-card,
+  .timeline-item,
+  .before-after,
+  .before-after__after,
+  .before-after__image,
+  #gallery .work-blob,
+  #gallery .work-blob__image,
+  #gallery .gallery-overlay,
+  .js-cta {
+    animation: none;
+    transition: none;
+    transform: none;
+  }
+}
